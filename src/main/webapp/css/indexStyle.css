@@ -1,0 +1,147 @@
+html,body{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #e9edf3;
+}
+.top1{
+    height:80px;
+    width: 100%;
+    background-color: #2452a1;
+}
+.span1{
+    color: white;
+    font-size:35px;
+    font-weight: 800;
+    line-height: 80px;
+    margin-left: 25px;
+    letter-spacing: 6px;
+    font-family: '楷体';
+}
+.img2{
+     float: left;
+     width: 25px;
+     height: 25px;
+     margin: 26px auto;
+     float: right;
+ }
+.span2{
+    float: left;
+    color: white;
+    height: 30px;
+    margin: 28px auto;
+    float: right;
+}
+.span2 .a1{
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+.head1{
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    float: right;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.center1{
+    padding-top: 10px;
+    background-color: white;
+    width: 250px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 2%;
+    float: left;
+}
+.spanUl{
+    margin-left: 15px;
+    color: #73a0cb;
+    font-weight: 800;
+}
+.ul1{
+    list-style: none;
+    margin: 0px;
+    padding:0px;
+
+}
+.ul1 li{
+    width: 98%;
+    height: 50px;
+    margin-bottom: 1px;
+    line-height: 40px;
+    border-left: 4px solid #5b9bd0;
+    background-color:#f3f5f9;
+}
+.ul1 li  span{
+    font-size: 15px;
+    margin-left: 10px;
+    line-height: 50px;
+    color: #2452a1 ;
+}
+.ul1 li  img{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -3px;
+
+}
+.ul1  a{
+    text-decoration: none;
+}
+.imgXz{
+    float: right;
+    margin-top: 15px;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -3px;
+}
+.ul1 a li :visited  .imgXz{
+    /*图片旋转效果*/
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
+    -o-transform:rotate(90deg); /* Opera */
+}
+.liDiv{
+    border: none;
+}
+.liDiv .liDivUl{
+    width: 100%;
+    border: none;
+    list-style: none;
+    margin: 0px;
+    padding:0px;
+
+}
+.liDiv .liDivUl li{
+    height:40px ;
+    font-size: 15px;
+    line-height: 40px;
+    background-color: white;
+    border: none;
+}
+.liDivUlLiSpan{
+    font-size: 15px;
+    margin-left: 10px;
+    line-height: 30px;
+    color: #000000 ;
+}
+.liDiv .nbLi:hover{
+    width: 100%;
+   background-color:#f3f5f9 ;
+}
+.bottom1{
+    margin-left: 20px;
+    margin-top: 20px;
+    width:auto;
+    position: absolute;
+    right: 1px;
+    left: 270px;
+    height: 800px;
+
+}
+

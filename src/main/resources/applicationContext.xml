@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<context:component-scan base-package="com.greathiit.lab">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+
+	<!-- 开启Spring 注解的支持 -->
+	<context:annotation-config></context:annotation-config>
+	<!-- 开启Spring 事务管理器支持 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 关联JAVA标准配置文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+	<!-- 配置c3p0数据源 -->
+	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="driverClass" value="${jdbc.driver}"></property>
+	</bean>
+	<!-- 事务管理器，依赖于事务源 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 配置增强 -->
+	<tx:advice id="advice1" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 切点切面 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.greathiit.lab.service.*.*(..))"
+			id="cut1" />
+		<aop:advisor advice-ref="advice1" pointcut-ref="cut1" />
+	</aop:config>
+
+	<!-- 创建sqlsessionfactoryBean -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" name="SqlSesionFactiory">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 引入mybatis.xml -->
+		<property name="configLocation" value="classpath:mybatis.xml"></property>
+		<!-- 加载映射文件 -->
+		<property name="mapperLocations" value="classpath*:mappings/*Mapper.xml"></property>
+	</bean>
+	<!-- 接口.java文件放哪了 -->
+	<mybatis-spring:scan base-package="com.greathiit.lab.dao"/>
+</beans>

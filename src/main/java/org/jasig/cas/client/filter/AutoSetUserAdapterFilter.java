@@ -41,7 +41,7 @@ public class AutoSetUserAdapterFilter implements Filter {
 		final HttpServletRequest request = (HttpServletRequest) servletRequest;
 		final HttpServletResponse response = (HttpServletResponse) servletResponse;
 		final HttpSession session = request.getSession(false);
-		 String adminRoleId = config.getInitParameter("adminRoleId");        // 登录登陆页面
+		String adminRoleId = config.getInitParameter("adminRoleId");        // 登录登陆页面
 		String sessionid = String.valueOf(session.getAttribute(LOGIN_SESSION_ID));
 		//判断当前用户是否合法,合法直接放行
 		if(!StringUtils.isEmpty(sessionid)) {
@@ -72,7 +72,7 @@ public class AutoSetUserAdapterFilter implements Filter {
 					 customer.setCustName(attributes.get("name").toString());
 					 customer.setCustPasswd("888888");
 					 customer.setCustImg("headImg/default.jpg");
-					 if(Arrays.asList(roleIds).contains(adminRoleId)) {
+					 if(!StringUtils.isEmpty(adminRoleId)&&Arrays.asList(roleIds).contains(adminRoleId)) {
 						 customer.setCustRoot("2");
 					 }else {
 						 customer.setCustRoot("1");

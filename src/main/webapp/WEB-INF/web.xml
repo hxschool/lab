@@ -129,11 +129,7 @@
 	<filter>
 	<filter-name>AutoSetUserAdapterFilter</filter-name>
 	<filter-class>org.jasig.cas.client.filter.AutoSetUserAdapterFilter</filter-class>
-	<init-param>
-		<param-name>adminRoleId</param-name>
-		<param-value>1</param-value>
-	</init-param>
-</filter>
+	</filter>
 	<filter-mapping>
 		<filter-name>AutoSetUserAdapterFilter</filter-name>
 		<url-pattern>*</url-pattern>

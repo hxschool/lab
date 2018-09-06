@@ -59,4 +59,6 @@
 	</bean>
 	<!-- 接口.java文件放哪了 -->
 	<mybatis-spring:scan base-package="com.greathiit.lab.dao"/>
+	
+		<bean id="springContextHelper" class="org.jasig.cas.client.filter.SpringContextHelper"></bean>
 </beans>

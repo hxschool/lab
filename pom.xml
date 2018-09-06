@@ -187,9 +187,16 @@
 			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.jasig.cas</groupId> <artifactId>cas-server-support-oauth</artifactId> 
-			<version>4.2.7</version> </dependency> <dependency> <groupId>org.jasig.cas.client</groupId> 
-			<artifactId>cas-client-core</artifactId> <version>3.2.1</version> </dependency> -->
+	<dependency>
+		<groupId>org.jasig.cas</groupId>
+		<artifactId>cas-server-support-oauth</artifactId>
+		<version>4.2.7</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jasig.cas.client</groupId>
+		<artifactId>cas-client-core</artifactId>
+		<version>3.2.1</version>
+	</dependency>
 
 		<!-- SPRING begin -->
 		<dependency>

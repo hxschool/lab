@@ -42,11 +42,14 @@ public class AutoSetUserAdapterFilter implements Filter {
 		final HttpServletResponse response = (HttpServletResponse) servletResponse;
 		final HttpSession session = request.getSession(false);
 		String adminRoleId = config.getInitParameter("adminRoleId");        // 登录登陆页面
-		String sessionid = String.valueOf(session.getAttribute(LOGIN_SESSION_ID));
-		//判断当前用户是否合法,合法直接放行
-		if(!StringUtils.isEmpty(sessionid)) {
+		Object object = session.getAttribute(LOGIN_SESSION_ID);
+	
+		if(!StringUtils.isEmpty(object)) {
 			filterChain.doFilter(request, response);
 		}
+		String sessionid = String.valueOf(session.getAttribute(LOGIN_SESSION_ID));
+		//判断当前用户是否合法,合法直接放行
+		
 		AttributePrincipal principal = (AttributePrincipal) request.getUserPrincipal();
 		java.util.Map<String, Object> attributes = principal.getAttributes();
 		String roleId = (String)attributes.get("roleId");

@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 
 import com.greathiit.lab.entity.Customer;
 import com.greathiit.lab.service.CustomerService;
+import com.greathiit.lab.service.LaborService;
 
 
 
@@ -67,6 +68,7 @@ public class AutoSetUserAdapterFilter implements Filter {
 				String	no = attributes.get("no").toString();
 				
 				CustomerService customerService = (CustomerService)SpringContextHelper.getBean("customerService");
+				LaborService laborService = (LaborService)SpringContextHelper.getBean("laborService");
 				Customer customer = customerService.selectCustomeByCustId(Integer.valueOf(no));
 				if(StringUtils.isEmpty(customer)) {
 					 customer = new Customer();
@@ -85,6 +87,7 @@ public class AutoSetUserAdapterFilter implements Filter {
 					 customerService.insertCustomer(customer);
 				}
 				session.setAttribute("loginCustomer", customerService.selectCustomeByCustId(customer.getCustId()));
+				session.setAttribute("loginLaboratorys", laborService.selectLaborBylaborUser(customer.getCustId()));
 			}
 		}
 		

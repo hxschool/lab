@@ -90,8 +90,6 @@ public class AutoSetUserAdapterFilter implements Filter {
 				session.setAttribute("loginLaboratorys", laborService.selectLaborBylaborUser(customer.getCustId()));
 			}
 		}
-		
-		filterChain.doFilter(request, response);
 	}
 	
 	private String randomPassword(){
